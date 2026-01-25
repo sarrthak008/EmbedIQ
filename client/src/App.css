@@ -1,0 +1,21 @@
+@font-face {
+    font-family: inter;
+    src: url("./assets/fonts/inter.ttf");
+}
+
+@font-face {
+    font-family:neo;
+    src: url("./assets/fonts/neofolia.otf");
+}
+
+body{
+    font-family: inter;
+    background: #f4f5f7;
+    overflow-x: hidden;
+}
+
+.neo{
+    font-family: neo;
+}
+
+
