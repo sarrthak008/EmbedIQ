@@ -40,11 +40,11 @@ const HeroCard = () => {
 const VideoCard = () => {
   return (
     <section id="video">
-      <div className="w-[95%] mx-auto mb-30 h-[50vh] bg-black flex">
+      <div className="w-[95%] mx-auto mb-30 h-[40vh] md:h-[50vh] bg-black flex">
         <div className="w-[70%] h-full flex items-center relative">
           <img src={GIF} className="rotate-[90deg] hue-rotate-30 h-full object-contain" />
 
-          <div className="absolute  shadow-blink rounded-3xl left-[17%] overflow-hidden bg-red-400 h-[200px] w-[350px] z-30">
+          <div className="absolute  shadow-blink rounded-3xl left-[17%] overflow-hidden bg-red-400 h-[200px] w-[300px] md:w-[350px] z-30">
             <video autoPlay muted loop className="h-full absolute top-0 w-full object-cover">
               <source src={VIDEO} />
             </video>
@@ -105,7 +105,7 @@ const Hero = () => {
         <VideoCard />
       </section>
 
-      <section id="pricing">
+      <section id="pricing" className="w-full px-2 border-b-4 mb-4" >
          <Plane/>
       </section>
     </>
