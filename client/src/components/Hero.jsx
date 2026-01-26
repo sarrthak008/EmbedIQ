@@ -96,12 +96,12 @@ const Hero = () => {
       </section>
 
       {/* SOLUTIONS */}
-      <section id="solutions" className="w-full px-2 border-b-4 mb-4">
+      <section id="solutions" className="w-full px-2 border-b-4 mb-4 mt-20">
         <HeroCard />
       </section>
 
       {/* VIDEO */}
-      <section>
+      <section className="mt-20">
         <VideoCard />
       </section>
 

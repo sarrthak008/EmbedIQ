@@ -27,9 +27,9 @@ const Navbar = () => {
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center ">
-            <button className="bg-black text-white px-5 py-2 rounded-full">
+            <Link to={"/login"} className="bg-black text-white px-5 py-2 rounded-full">
               Get Started →
-            </button>
+            </Link>
           </div>
 
           {/* Mobile Hamburger */}
