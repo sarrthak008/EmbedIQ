@@ -1,87 +1,117 @@
-import { useState } from "react";
-import {
-  Home,
-  Bot,
-  Upload,
-  Code,
-  MessageSquare,
-  BarChart,
-  Settings,
-  LogOut,
-  Menu
-} from "lucide-react";
+import { Menu,Plus,Bot,FileText,Settings,LogOut} from "lucide-react";
 
-export default function Sidebar() {
-  const [open, setOpen] = useState(true); // ✅ default open
 
+
+
+const FooterItem = ({ icon, label, open })=> {
+  return (
+    <div
+      className="flex items-center gap-3 px-3 py-2 rounded-lg
+      text-gray-600 hover:bg-gray-200 cursor-pointer text-sm"
+    >
+      {icon}
+      {open && label}
+    </div>
+  );
+}
+
+
+
+
+// 🔹 Demo bot data (replace with API later)
+const bots = [
+  { id: 1, name: "Clinic Bot" },
+  { id: 2, name: "Support Bot" },
+  { id: 3, name: "FAQ Bot" }
+];
+
+const Sidebar=({ open, setOpen })=> {
   return (
     <aside
-      className={`h-screen bg-gradient-to-br from-gray-400 to-gray-200 border-r
-      flex flex-col transition-all duration-300
-      ${open ? "w-[230px]" : "w-[70px]"}`}
+      className={`fixed left-0 top-0 h-screen bg-[#dfe0e1f5] border-r
+      flex flex-col transition-all duration-300 ease-in-out z-40
+      ${open ? "w-[260px]" : "w-[72px]"}`}
     >
 
-      {/* HEADER */}
-      <div className="flex items-center justify-between px-4 py-4">
-        {open && (
-          <div className="text-2xl neo font-bold">
-            EmbedIQ
-          </div>
-        )}
-
+      {/* ================= HEADER ================= */}
+      <div className="flex items-center gap-3 px-4 py-4">
         <Menu
+          size={20}
           className="cursor-pointer"
           onClick={() => setOpen(!open)}
         />
+        {open && (
+          <span className="text-3xl font-bold tracking-tight neo">
+            EmbedIQ
+          </span>
+        )}
       </div>
 
-      {/* NAVIGATION */}
-      <nav className="flex-1 mt-4 px-2 space-y-4 text-sm font-semibold">
-        <NavItem icon={<Home size={18} />} label="Dashboard" open={open} active />
-        <NavItem icon={<Bot size={18} />} label="My Chatbots" open={open} />
-        <NavItem icon={<Upload size={18} />} label="Upload Data" open={open} />
-        <NavItem icon={<Code size={18} />} label="Embed / CDN" open={open} />
-        <NavItem icon={<MessageSquare size={18} />} label="Chat History" open={open} />
-        <NavItem icon={<BarChart size={18} />} label="Analytics" open={open} />
-        <NavItem icon={<Settings size={18} />} label="Settings" open={open} />
-      </nav>
+      {/* ================= NEW BOT ================= */}
+      <div className="px-3 mb-3">
+        <button
+          className={`w-full flex items-center gap-2 px-3 py-2 rounded-sm
+          bg-black text-white text-sm font-medium justify-center`}
+        >
+          <Plus size={16} />
+          {open && "New Bot"}
+        </button>
+      </div>
 
-      {/* USER */}
-      <div className="border-t p-3">
-        <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-full bg-indigo-500 text-white flex items-center justify-center font-semibold">
-            S
+      {/* ================= BOT LIST ================= */}
+      <div className="flex-1 overflow-y-auto px-2">
+        {open && (
+          <p className="text-xs uppercase text-gray-400 px-2 mb-2">
+            My Bots
+          </p>
+        )}
+
+        {bots.map((bot) => (
+          <div
+            key={bot.id}
+            className={`flex items-center gap-3 px-3 py-2 rounded-lg
+            cursor-pointer text-sm mb-1
+            text-gray-700 hover:bg-gray-200`}
+          >
+            <Bot size={16} />
+            {open && bot.name}
           </div>
+        ))}
+      </div>
 
-          {open && (
-            <div className="flex-1">
-              <p className="text-sm font-medium">Sarthak</p>
-              <p className="text-xs text-gray-500">User</p>
+      {/* ================= PLAN SECTION ================= */}
+      <div className="px-3 py-3 border-t">
+        {open && (
+          <>
+            <p className="text-xs text-gray-400 mb-1">Plan</p>
+            <p className="text-sm font-medium">Pro Plan</p>
+
+            {/* Usage bar */}
+            <div className="h-1 bg-gray-300 rounded mt-2 overflow-hidden">
+              <div className="h-1 bg-black rounded w-[60%]" />
             </div>
-          )}
 
-          <LogOut
-            size={18}
-            className="text-gray-500 cursor-pointer hover:text-red-500"
-          />
-        </div>
+            {/* Upgrade Button */}
+            <button
+              className="mt-4 w-full h-[44px] rounded-s
+              bg-black text-white text-sm font-semibold
+              hover:opacity-90 transition"
+            >
+              Upgrade Plan
+            </button>
+          </>
+        )}
+      </div>
+
+      {/* ================= FOOTER ================= */}
+      <div className="border-t px-3 py-3 space-y-1">
+        <FooterItem icon={<FileText size={16} />} label="Docs" open={open} />
+        <FooterItem icon={<Settings size={16} />} label="Settings" open={open} />
+        <FooterItem icon={<LogOut size={16} />} label="Logout" open={open} />
       </div>
     </aside>
   );
 }
 
-/* NAV ITEM */
-function NavItem({ icon, label, open, active }) {
-  return (
-    <div
-      className={`flex items-center gap-3 px-3 py-3 rounded-md cursor-pointer
-        ${active
-          ? "bg-black text-white"
-          : "text-gray-700 hover:bg-gray-300"
-        }`}
-    >
-      {icon}
-      {open && <span>{label}</span>}
-    </div>
-  );
-}
+
+export default Sidebar;
