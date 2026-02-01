@@ -10,7 +10,7 @@
     }
 
     // CHANGE THIS TO YOUR ACTUAL PRODUCTION API URL
-    const BACKEND_URL = "https://your-production-api.com"; 
+    const BACKEND_URL = "http://localhost:8000"; 
 
     function createWidget() {
         const container = document.createElement('div');
