@@ -1,51 +1,94 @@
+import axios from "axios";
 import robot from "../assets/robot.png";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import PaymentService from "../Services/PaymentService";
 
 const pricingPlans = [
   {
-    name: "Free Plan",
+    name: "FREE",
     price: "₹0",
     duration: "/ month",
     popular: false,
     features: [
       "Create 1 chatbot",
       "Up to 100 conversations / month",
-      "Basic AI responses",
       "Website embed (CDN script)",
-      "Basic usage analytics",
+      "usage analytics",
       "Community support"
     ]
-  },{
-    name: "Pro Plan",
+  }, {
+    name: "PRO",
     price: "₹1,499",
     duration: "/ month",
     popular: true,
     features: [
       "Create up to 10 chatbots",
       "Up to 10,000 conversations / month",
-      "Advanced AI responses",
-      "Custom chatbot appearance",
-      "Advanced analytics & insights",
-      "Priority email support"
+      "Website embed (CDN script)",
+      "usage analytics",
+      "Community support"
     ]
   },
   {
-    name: "Starter Plan",
+    name: "STARTER",
     price: "₹499",
     duration: "/ month",
     popular: false,
     features: [
       "Create up to 3 chatbots",
       "Up to 1,000 conversations / month",
-      "Improved AI accuracy",
       "Website embed (CDN script)",
-      "Basic analytics dashboard",
-      "Email support"
+      "usage analytics",
+      "Community support"
     ]
   }
 ];
 
 
 const Plan = () => {
+
+  const [mail, setMail] = useState(null);
+  const navigate = useNavigate();
+
+  const fetchUser = () => {
+    try {
+      let store_user = JSON.parse(localStorage.getItem("USER")) || null
+      if (!store_user) {
+        navigate("/login");
+      } else {
+        // console.log(store_user);
+        setMail(store_user.email);
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleCheckout = async (plan) => {
+     if(!mail){
+      fetchUser();
+      return;
+     }
+
+    try {
+      const amount = parseInt(plan.price.replace(/[₹,]/g, "")) * 100;
+      if (amount === 0) {
+        navigate("/signup");
+        return;
+      }
+      // 2. Call your Spring Boot API
+      const response = await PaymentService.pay(amount, plan.name, mail);
+      if (response.data.url) {
+        window.location.href = response.data.url;
+      }
+    } catch (error) {
+      console.error("Payment Error:", error);
+      alert("Failed to initiate payment. Is your Spring Boot app running?");
+    }
+  };
+
+
   return (
     <section id="pricing" className="py-24 px-6 w-[95%] border-l-4 border-r-4 mx-auto">
       {/* Header */}
@@ -107,15 +150,16 @@ const Plan = () => {
 
             {/* Button */}
             <button
+              onClick={() => handleCheckout(plan)} // Add this line
               className={`
-                w-full py-3 rounded-full font-medium mb-8 transition relative z-10
-                ${plan.popular
+ w-full py-3 rounded-full font-medium mb-8 transition relative z-10
+    ${plan.popular
                   ? "bg-black text-white hover:opacity-90"
                   : "border border-gray-300 text-gray-800 hover:bg-gray-100"
                 }
-              `}
+  `}
             >
-              Get Started
+              {plan.price === "₹0" ? "Sign Up Free" : "Get Started"}
             </button>
 
             {/* Features */}

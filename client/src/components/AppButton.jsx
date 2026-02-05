@@ -2,7 +2,7 @@ const AppButton = ({ text, onClick, type = "button" }) => {
   return (
     <button
       type={type}
-      onClick={onClick}
+      onClick={()=>onClick()}
       className="
         w-full
         bg-black

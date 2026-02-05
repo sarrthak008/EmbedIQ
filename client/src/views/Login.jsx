@@ -4,9 +4,50 @@ import AppButton from "../components/AppButton";
 import { BRAND_NAME } from "../../config/default";
 import Navbar from "../components/Navbar";
 import AppGoogleButton from "../components/AppGoogleButton";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
+import { useDispatch } from "react-redux";
+import { setUser } from "../features/Auth/AuthSlice";
+import AuthService from "../Services/AuthService";
+
 
 const Login = () => {
+
+  const [email, SetEmail] = useState();
+  const [password, setPassword] = useState();
+  const [LoginTxt, setLoginTxt] = useState("Login")
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handelLogin = async () => {
+    let id = toast.loading("Login...")
+    const result = await AuthService.login(email, password);
+    console.log(result)
+    if (!result?.success) {
+      toast.error(result.message, { id: id })
+    } else {
+      toast.success(result?.data?.message, { id: id })
+      dispatch(setUser(result?.data.data))
+      navigate("/dashboard")
+    }
+  }
+
+  const autoLogtoDashboard = () => {
+    try {
+      let user = JSON.parse(localStorage.getItem("USER")) || null
+      if (user) {
+        navigate("/dashboard")
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    autoLogtoDashboard()
+  }, []);
+
   return (
     <>
       <Navbar />
@@ -58,12 +99,16 @@ const Login = () => {
             {/* Email Form */}
             <div className="space-y-5">
               <AppInput
+                value={email}
+                onChange={(text) => SetEmail(text)}
                 label="Email"
                 type="email"
                 placeholder="you@example.com"
               />
 
               <AppInput
+                value={password}
+                onChange={(text) => setPassword(text)}
                 label="Password"
                 type="password"
                 placeholder="••••••••"
@@ -75,7 +120,7 @@ const Login = () => {
                 </span>
               </div>
 
-              <AppButton text="Login" />
+              <AppButton text={LoginTxt} onClick={() => handelLogin()} />
             </div>
 
             <p className="text-sm text-gray-500 text-center mt-8">

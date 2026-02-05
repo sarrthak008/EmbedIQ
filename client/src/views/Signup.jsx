@@ -3,9 +3,33 @@ import AppInput from "../components/AppInput";
 import AppButton from "../components/AppButton";
 import { BRAND_NAME } from "../../config/default";
 import Navbar from "../components/Navbar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { toast } from "sonner";
+import AuthService from "../Services/AuthService";
+
 
 const Signup = () => {
+
+  const [email, SetEmail] = useState();
+  const [password, setPassword] = useState();
+  const [comapny, setComapny] = useState();
+  const [signupTxt, setSignupTxt] = useState("Create Account");
+  const navigate = useNavigate();
+
+   const handelSignUp = async()=>{
+    let id = toast.loading("Creating Account...")
+    const result = await AuthService.signup(comapny,email, password);
+    console.log(result)
+    if(!result?.success){
+       toast.error(result.message,{id:id})
+    }else{
+      toast.success(result?.data?.message,{id:id})
+      navigate("/login")
+    }
+   }
+ 
+
   return (
     <>
       <Navbar />
@@ -26,24 +50,30 @@ const Signup = () => {
             <div className="mt-8 space-y-5">
 
               <AppInput
+                value={comapny}
+                onChange={(txt) => setComapny(txt)}
                 label="Company Name"
                 type="text"
                 placeholder="Your company name"
               />
 
               <AppInput
+                value={email}
+                onChange={(txt) => SetEmail(txt)}
                 label="Email"
                 type="email"
                 placeholder="you@company.com"
               />
 
               <AppInput
+                value={password}
+                onChange={(txt) => setPassword(txt)}
                 label="Password"
                 type="password"
                 placeholder="••••••••"
               />
 
-              <AppButton text="Create Account" />
+              <AppButton text={signupTxt} onClick={()=>handelSignUp()}/>
             </div>
 
             <p className="text-sm text-gray-500 text-center mt-8">

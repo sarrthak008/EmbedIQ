@@ -14,7 +14,7 @@ const AppInput = ({
         type={type}
         placeholder={placeholder}
         value={value}
-        onChange={onChange}
+        onChange={(e)=>onChange(e.target.value)}
         className="
           px-4 py-3
           rounded-xl
