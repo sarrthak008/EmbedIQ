@@ -2,7 +2,7 @@ const AppGoogleButton = ({ text = "Continue with Google" }) => {
 
   const handleGoogleLogin = () => {
     // redirect to Spring Boot OAuth
-    window.location.href = "http://localhost:8080/oauth2/authorization/google";
+    window.location.href = "https://focused-optimism-production-ea76.up.railway.app/oauth2/authorization/google";
   };
 
   return (
