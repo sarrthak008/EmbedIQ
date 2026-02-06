@@ -36,7 +36,7 @@ public class GoogleOAuthSuccessHandler implements AuthenticationSuccessHandler {
         LoginRepoce login = userService.googleLogin(email, name);
 
         response.sendRedirect(
-                "http://localhost:5173/auth?token=" + login.getToken()
+                "https://embediq.in/auth?token=" + login.getToken()
         );
     }
 }

@@ -28,8 +28,8 @@ public class StripeService {
     public Session createCheckoutSession(long amountInRupees, String planName, String mail) throws Exception {
         SessionCreateParams params = SessionCreateParams.builder()
                 .setMode(SessionCreateParams.Mode.PAYMENT)
-                .setSuccessUrl("http://localhost:5173/success?session_id={CHECKOUT_SESSION_ID}")
-                .setCancelUrl("http://localhost:5173/cancel")
+                .setSuccessUrl("https://embediq.in/success?session_id={CHECKOUT_SESSION_ID}")
+                .setCancelUrl("https://embediq.in/cancel")
 
                 // 📝 STORE CUSTOM DATA HERE (Metadata)
                 .putMetadata("user_email", mail)

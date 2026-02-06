@@ -83,7 +83,8 @@ public class JwtSecurityConfig {
         // =====================================
         CorsConfiguration dashboardConfig = new CorsConfiguration();
         dashboardConfig.setAllowedOrigins(Arrays.asList(
-                "http://localhost:5173"
+                "http://localhost:5173",
+                "https://embediq.in"
         ));
         dashboardConfig.setAllowedMethods(Arrays.asList("*"));
         dashboardConfig.setAllowedHeaders(Arrays.asList("*"));
