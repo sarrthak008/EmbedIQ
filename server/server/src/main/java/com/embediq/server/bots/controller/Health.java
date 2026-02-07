@@ -19,7 +19,7 @@ import java.util.Map;
 @RequestMapping("/api/health")
 public class Health {
 
-//    @Autowired
+    @Autowired
     private MyMailSender sender;
 
     @GetMapping
