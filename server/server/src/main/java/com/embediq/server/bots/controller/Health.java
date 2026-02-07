@@ -20,11 +20,11 @@ import java.util.Map;
 public class Health {
 
 //    @Autowired
-//    private MyMailSender sender;
+    private MyMailSender sender;
 
     @GetMapping
     public ResponseEntity<ApiResponce<?>> getHelath(){
-//        sender.sendWelcomeEmail("sarthaknavale40@gmail.com","health Route Called...");
+        sender.sendWelcomeEmail("sarthaknavale40@gmail.com","health Route Called...");
         return  ResponseEntity.ok(new ApiResponce<>(true,"server is running halthy",null));
     }
 }

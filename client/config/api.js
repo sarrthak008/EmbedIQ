@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://focused-optimism-production-ea76.up.railway.app",
+  baseURL: "https://embediq.onrender.com",
 });
 
 api.interceptors.request.use((config) => {
