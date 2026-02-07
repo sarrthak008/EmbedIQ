@@ -1,7 +1,7 @@
 (function() {
     const scriptTag = document.currentScript || document.querySelector('script[src*="enbedIq.js"]');
     const botId = scriptTag ? scriptTag.getAttribute('data-bot-id')?.trim() : null;
-    const BACKEND_URL = "http://localhost:8080"; 
+    const BACKEND_URL = "https://embediq.onrender.com"; 
     const STORAGE_KEY = `eiq_settings_${botId}`;
 
     if (!botId) return;
