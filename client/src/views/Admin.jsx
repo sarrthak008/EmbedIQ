@@ -16,7 +16,7 @@ const Admin = () => {
   const checkIsAdmin =()=>{
       let user = JSON.parse(localStorage.getItem("USER"))
       if(user?.role !== "ADMIN"){
-        //  navigate("/")
+         navigate("/")
       }
   }
 
