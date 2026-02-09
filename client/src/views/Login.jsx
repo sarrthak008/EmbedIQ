@@ -36,8 +36,10 @@ const Login = () => {
   const autoLogtoDashboard = () => {
     try {
       let user = JSON.parse(localStorage.getItem("USER")) || null
-      if (user) {
-        navigate("/dashboard")
+      if (user?.role == "USER") {
+        navigate("/dashboard");
+      } else if(user?.role == "ADMIN"){
+         navigate("/admin");
       }
     } catch (error) {
       console.log(error)

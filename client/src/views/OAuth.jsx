@@ -33,8 +33,11 @@ const OAuth = () => {
             token
         }))
 
-        // then navigate
-        navigate("/dashboard", { replace: true })
+        if(decoded?.role == "USER"){
+            navigate("/dashboard", { replace: true })
+        }else if(decoded?.role == "ADMIN"){
+            navigate("/admin", { replace: true })
+        }
 
     }, [])
 
