@@ -9,17 +9,32 @@ import Guide from "../components/Guide"
 import { useDispatch, useSelector } from "react-redux"
 import { setAddModel, setGuideOpen } from "../features/ui/uiSlice"
 import GhostModeBanner from "../components/userDashbord/GhostModeBanner"
+import { useNavigate } from "react-router-dom"
 
 
 const Dashboard = () => {
 
   const [sidebarOpen, setSidebarOpen] = useState(true)
-
+  const navigate = useNavigate();
   const dispatch = useDispatch()
   const isOpen = useSelector(state => state.ui.isAddModelBotActive)
   const isLoaderActive = useSelector(state => state.ui.isLoaderActive)
   const isGuideOpen = useSelector(state => state.ui.isGuideOpen)
 
+  const checkIsAdmin =()=>{
+        let user = JSON.parse(localStorage.getItem("USER")) || null
+        if(!user){
+           navigate("/")
+        }
+        if(user?.role !== "ADMIN"){
+           navigate("/admin")
+        }
+    }
+  
+    useEffect(()=>{
+       checkIsAdmin();
+    },[])
+  
   return (
     <div>
       <Sidebar open={sidebarOpen} setOpen={setSidebarOpen} />
