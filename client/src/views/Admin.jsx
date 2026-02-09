@@ -6,12 +6,12 @@ import UserDirectory from '../components/adminDashboard/UserDirectory';
 import GlobalBots from '../components/adminDashboard/GlobalBots';
 import UserAuditReports from '../components/adminDashboard/UserAuditReports';
 import { useEffect } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 
 const Admin = () => {
   const [open, setOpen] = useState(true);
   const [activeView, setActiveView] = useState("DASHBOARD");
-  const navigate = navigate()
+  const navigate = useNavigate()
 
   const checkIsAdmin =()=>{
       let user = JSON.parse(localStorage.getItem("USER"))
