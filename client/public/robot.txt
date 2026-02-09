@@ -1,0 +1,29 @@
+# https://www.robotstxt.org/robotstxt.html
+
+# 1. Allow all search engines to crawl the marketing site
+User-agent: *
+Allow: /
+Allow: /demo
+Allow: /features
+Allow: /pricing
+
+# 2. Block private/sensitive areas
+# We don't want Google showing users' private dashboards in search
+Disallow: /dashboard
+Disallow: /settings
+Disallow: /api/
+Disallow: /login
+Disallow: /register
+Disallow: /reset-password
+
+# 3. Block the bot embed/widget from being indexed directly
+# They should only be indexed as part of the client's site
+Disallow: /widget
+Disallow: /iframe
+
+# 4. Link to your Sitemap (Make sure to generate this next!)
+Sitemap: https://www.embediq.in/sitemap.xml
+
+# 5. Friendly note for AI Crawlers (Optional)
+User-agent: GPTBot
+Allow: /
