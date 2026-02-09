@@ -7,6 +7,7 @@ import AdminServices from "../../Services/AdminServices";
 import ROBOT from "../../assets/robot.png"
 import {toast} from "sonner"
 
+// --- SKELETON ROW ---
 const UserSkeleton = () => (
   <div className="grid grid-cols-12 items-center px-8 py-6 bg-gray-50/40 border border-gray-100 rounded-md animate-pulse">
     <div className="col-span-5 flex items-center gap-5">
@@ -30,6 +31,7 @@ const UserDirectory = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [user, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
+  
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [activeUser, setActiveUser] = useState(null);
@@ -78,8 +80,10 @@ const UserDirectory = () => {
   };
 
   return (
-    <div className="min-h-screen text-[#1a1a1a] font-sans selection:bg-black selection:text-white">
+    <div className="min-h-screen text-[#1a1a1a] font-sans selection:bg-black selection:text-white relative">
       <div className="max-w-[1200px] mx-auto px-8 py-16">
+        
+        {/* --- HEADER --- */}
         <header className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
           <div className="space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-50 border border-gray-100">
@@ -101,6 +105,7 @@ const UserDirectory = () => {
           </div>
         </header>
 
+        {/* --- LIST CONTENT --- */}
         <div className="space-y-3 min-h-[400px]">
           {loading ? [...Array(5)].map((_, i) => <UserSkeleton key={i} />) : 
             user.filter(u => u.email.toLowerCase().includes(searchTerm.toLowerCase())).map((userItem, i) => (
@@ -121,8 +126,8 @@ const UserDirectory = () => {
                 <div className="col-span-4 flex items-center justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
                   {userItem.role === "USER" && (
                     <>
-                      <button onClick={() => { setActiveUser(userItem); setShowLoginModal(true); }} className="px-4 py-2 bg-gray-50 hover:bg-black hover:text-white rounded-xl text-xs font-bold transition-all">LOGIN <ArrowUpRight size={14} /></button>
-                      <button onClick={() => { setActiveUser(userItem); setShowDeleteModal(true); }} className="p-2.5 text-gray-400 hover:text-red-500"><Trash2 size={18} /></button>
+                      <button onClick={() => { setActiveUser(userItem); setShowLoginModal(true); }} className="px-5 py-2 bg-gray-50 hover:bg-black hover:text-white rounded-xl text-xs font-bold transition-all">LOGIN <ArrowUpRight size={14} /></button>
+                      <button onClick={() => { setActiveUser(userItem); setShowDeleteModal(true); }} className="p-2.5 text-gray-400 hover:text-red-500 transition-colors"><Trash2 size={18} /></button>
                     </>
                   )}
                 </div>
@@ -131,17 +136,37 @@ const UserDirectory = () => {
         </div>
       </div>
 
-      {/* MODALS (Login & Delete) - Using standard visibility logic as per your previous snippet */}
+      {/* --- LOGIN MODAL --- */}
       {showLoginModal && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-sm p-6">
           <div className="bg-white rounded-md w-full max-w-md p-10 relative overflow-hidden shadow-2xl animate-in zoom-in duration-300">
-            <img src={ROBOT} className="absolute -right-16 -bottom-16 w-64 h-72 opacity-[0.5] grayscale pointer-events-none" />
+            <img src={ROBOT} className="absolute -right-16 -bottom-16 w-64 h-72 opacity-[0.5] grayscale pointer-events-none" alt="bg" />
             <div className="relative z-10">
               <h3 className="text-3xl font-bold tracking-tighter mb-2">Impersonate</h3>
               <p className="text-gray-500 mb-8 text-sm">Log in as <span className="text-black font-semibold">{activeUser?.email}</span>?</p>
               <div className="flex gap-4">
-                <button onClick={() => setShowLoginModal(false)} className="flex-1 py-4 text-xs font-black uppercase bg-gray-100 rounded-2xl">Cancel</button>
-                <button onClick={()=>handleLoginAction(activeUser?.email)} className="flex-1 py-4 text-xs font-black uppercase bg-black text-white rounded-2xl">Authorize</button>
+                <button onClick={() => setShowLoginModal(false)} className="flex-1 py-4 text-xs font-black uppercase bg-gray-100 rounded-2xl hover:bg-gray-200 transition-all">Cancel</button>
+                <button onClick={()=>handleLoginAction(activeUser?.email)} className="flex-1 py-4 text-xs font-black uppercase bg-black text-white rounded-2xl hover:shadow-lg transition-all">Authorize</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* --- DELETE MODAL --- */}
+      {showDeleteModal && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-sm p-6">
+          <div className="bg-white rounded-md w-full max-w-md p-10 relative overflow-hidden shadow-2xl animate-in zoom-in duration-300 border border-red-50">
+             <img src={ROBOT} className="absolute -right-16 -bottom-16 w-64 h-72 opacity-[0.6] grayscale pointer-events-none" alt="bg" />
+            <div className="relative z-10">
+              <div className="h-14 w-14 bg-red-50 text-red-500 rounded-2xl flex items-center justify-center mb-6">
+                <AlertTriangle size={28} />
+              </div>
+              <h3 className="text-3xl font-bold tracking-tighter mb-2 text-red-600">Terminate</h3>
+              <p className="text-gray-500 mb-8 text-sm">Permanently remove <span className="text-black font-semibold">{activeUser?.email}</span>? This cannot be undone.</p>
+              <div className="flex gap-4">
+                <button onClick={() => setShowDeleteModal(false)} className="flex-1 py-4 text-xs font-black uppercase bg-gray-100 rounded-2xl hover:bg-gray-200 transition-all">Go Back</button>
+                <button onClick={()=>handleDeleteAction(activeUser?.email)} className="flex-1 py-4 text-xs font-black uppercase bg-red-600 text-white rounded-2xl hover:bg-red-700 transition-all shadow-lg shadow-red-200">Delete</button>
               </div>
             </div>
           </div>
