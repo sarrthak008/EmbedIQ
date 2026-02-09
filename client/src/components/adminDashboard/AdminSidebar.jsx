@@ -104,14 +104,14 @@ const AdminSidebar = ({ open, setOpen, activeView, setActiveView }) => {
                 {open && <span className="truncate">Global Bots</span>}
             </div>
 
-            <div
+            {/* <div
                 onClick={() => setActiveView("REPORTS")}
                 className={`flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer text-sm transition-colors
                 ${activeView === "REPORTS" ? "bg-gray-200 text-black font-bold" : "text-gray-700 hover:bg-gray-200"}`}
             >
                 <FileSearch size={16} />
                 {open && <span className="truncate">Audit Reports</span>}
-            </div>
+            </div> */}
         </div>
       </div>
 
@@ -128,7 +128,7 @@ const AdminSidebar = ({ open, setOpen, activeView, setActiveView }) => {
             <button
               className="mt-2 w-full h-[40px] rounded-sm bg-gray-100 text-gray-600 border border-gray-200 text-xs font-semibold hover:bg-gray-200 transition"
             >
-              System Logs
+              Admin
             </button>
           </>
         )}

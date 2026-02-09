@@ -5,10 +5,25 @@ import AdminDashboard from '../components/adminDashboard/AdminDashboard';
 import UserDirectory from '../components/adminDashboard/UserDirectory';
 import GlobalBots from '../components/adminDashboard/GlobalBots';
 import UserAuditReports from '../components/adminDashboard/UserAuditReports';
+import { useEffect } from 'react';
+
 
 const Admin = () => {
   const [open, setOpen] = useState(true);
   const [activeView, setActiveView] = useState("DASHBOARD");
+  const navigate = navigate()
+
+  const checkIsAdmin =()=>{
+      let user = JSON.parse(localStorage.getItem("USER"))
+      if(user?.role !== "ADMIN"){
+         navigate("/")
+      }
+  }
+
+  useEffect(()=>{
+     checkIsAdmin();
+  },[])
+
   return (
     <div>
       <AdminSidebar 

@@ -33,18 +33,11 @@ const AdminDashboard = () => {
     }
   }
 
-  const getSystemHealth = async () => {
-    try {
-      let data = await AdminServices.getSystemInformation();
-    } catch (error) {
 
-    }
-  }
 
 
   useEffect(() => {
     loadDashBoardData();
-    getSystemHealth();
   }, []);
 
   return (
@@ -57,10 +50,10 @@ const AdminDashboard = () => {
         </div>
         <div className="flex items-center gap-3">
           <div className="hidden md:block text-right">
-            <p className="text-[10px] font-bold text-gray-400 uppercase">Last Sync</p>
-            <p className="text-xs font-black text-gray-900">12:42:01 PM</p>
+            {/* <p className="text-[10px] font-bold text-gray-400 uppercase">Last Sync</p> */}
+            {/* <p className="text-xs font-black text-gray-900">12:42:01 PM</p> */}
           </div>
-          <button className="bg-black text-white px-6 py-3 rounded-sm font-bold text-sm transition-all shadow-lg shadow-gray-200">
+          <button onClick={()=>loadDashBoardData()} className="bg-black text-white px-6 py-3 rounded-sm font-bold text-sm transition-all shadow-lg shadow-gray-200">
             Generate System Report
           </button>
         </div>
@@ -131,9 +124,9 @@ const AdminDashboard = () => {
             <p className="text-xs text-gray-500 mt-1 leading-relaxed">
               Your AI training queue is empty. System is ready for high-load operations.
             </p>
-            <button className="mt-4 text-xs font-black uppercase tracking-widest text-purple-600 hover:text-purple-800">
+            {/* <button className="mt-4 text-xs font-black uppercase tracking-widest text-purple-600 hover:text-purple-800">
               Check Training Logs →
-            </button>
+            </button> */}
           </GlassCard>
 
         </div>
