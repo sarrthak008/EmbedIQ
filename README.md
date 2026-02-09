@@ -94,3 +94,4 @@ You can turn any website into a demo site in under 60 seconds:
 >
 </script>
 ```
+<p>code and ❤️ by sarthak.</p>
