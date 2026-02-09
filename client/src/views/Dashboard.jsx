@@ -21,20 +21,6 @@ const Dashboard = () => {
   const isLoaderActive = useSelector(state => state.ui.isLoaderActive)
   const isGuideOpen = useSelector(state => state.ui.isGuideOpen)
 
-  const checkIsAdmin =()=>{
-        let user = JSON.parse(localStorage.getItem("USER")) || null
-        if(!user){
-           navigate("/")
-        }
-        if(user?.role !== "ADMIN"){
-           navigate("/admin")
-        }
-    }
-  
-    useEffect(()=>{
-       checkIsAdmin();
-    },[])
-  
   return (
     <div>
       <Sidebar open={sidebarOpen} setOpen={setSidebarOpen} />
