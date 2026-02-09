@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NomadSky Travels</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+
+<body class="bg-white text-gray-900">
+
+<!-- NAVBAR -->
+<header class="absolute w-full z-50">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center text-white">
+        <h1 class="text-2xl font-bold tracking-wide">NomadSky</h1>
+        <nav class="hidden md:flex gap-10 text-sm uppercase tracking-wider">
+            <a href="#home" class="hover:text-orange-400">Home</a>
+            <a href="#experiences" class="hover:text-orange-400">Experiences</a>
+            <a href="#tours" class="hover:text-orange-400">Tours</a>
+            <a href="#about" class="hover:text-orange-400">About</a>
+            <a href="#contact" class="hover:text-orange-400">Contact</a>
+        </nav>
+        <button class="bg-orange-500 px-5 py-2 rounded-lg hover:bg-orange-600">Book Now</button>
+    </div>
+</header>
+
+<!-- HERO SECTION -->
+<section id="home" class="relative h-screen flex items-center">
+    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" class="absolute w-full h-full object-cover">
+    <div class="absolute inset-0 bg-black/50"></div>
+
+    <div class="relative max-w-7xl mx-auto px-6 text-white">
+        <h2 class="text-5xl md:text-6xl font-bold leading-tight mb-6">
+            Travel Beyond<br> The Ordinary
+        </h2>
+        <p class="max-w-xl text-lg text-gray-200 mb-8">
+            Unique journeys, breathtaking destinations, and unforgettable memories crafted for modern travelers.
+        </p>
+        <button class="bg-orange-500 px-8 py-4 rounded-lg text-lg hover:bg-orange-600">
+            Start Exploring
+        </button>
+    </div>
+</section>
+
+<!-- EXPERIENCES -->
+<section id="experiences" class="py-24 bg-gray-100">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-16">
+            <div>
+                <h3 class="text-4xl font-bold mb-3">Travel Experiences</h3>
+                <p class="text-gray-500">Choose how you want to explore the world</p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-4 gap-6">
+            <div class="bg-white p-8 rounded-3xl shadow hover:-translate-y-2 transition">
+                <div class="text-4xl mb-4">🏔️</div>
+                <h4 class="font-semibold mb-2">Adventure</h4>
+                <p class="text-sm text-gray-500">Trekking, hiking and thrill experiences.</p>
+            </div>
+            <div class="bg-white p-8 rounded-3xl shadow hover:-translate-y-2 transition">
+                <div class="text-4xl mb-4">🏖️</div>
+                <h4 class="font-semibold mb-2">Beach</h4>
+                <p class="text-sm text-gray-500">Relax at world’s most beautiful beaches.</p>
+            </div>
+            <div class="bg-white p-8 rounded-3xl shadow hover:-translate-y-2 transition">
+                <div class="text-4xl mb-4">🏙️</div>
+                <h4 class="font-semibold mb-2">City Tours</h4>
+                <p class="text-sm text-gray-500">Explore culture, food and nightlife.</p>
+            </div>
+            <div class="bg-white p-8 rounded-3xl shadow hover:-translate-y-2 transition">
+                <div class="text-4xl mb-4">🌄</div>
+                <h4 class="font-semibold mb-2">Nature</h4>
+                <p class="text-sm text-gray-500">Mountains, forests and landscapes.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURED TOURS -->
+<section id="tours" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <h3 class="text-4xl font-bold text-center mb-16">Featured Tours</h3>
+
+        <div class="grid md:grid-cols-3 gap-10">
+            <div class="group">
+                <div class="overflow-hidden rounded-3xl">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" class="h-80 w-full object-cover group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="mt-6">
+                    <h4 class="text-xl font-semibold">Maldives Escape</h4>
+                    <p class="text-gray-500 text-sm">5 Days Luxury Beach Experience</p>
+                    <p class="mt-2 font-bold text-orange-500">₹39,999</p>
+                </div>
+            </div>
+
+            <div class="group">
+                <div class="overflow-hidden rounded-3xl">
+                    <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34" class="h-80 w-full object-cover group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="mt-6">
+                    <h4 class="text-xl font-semibold">Paris Discovery</h4>
+                    <p class="text-gray-500 text-sm">Romantic City Tour</p>
+                    <p class="mt-2 font-bold text-orange-500">₹54,999</p>
+                </div>
+            </div>
+
+            <div class="group">
+                <div class="overflow-hidden rounded-3xl">
+                    <img src="https://images.unsplash.com/photo-1518684079-3c830dcef090" class="h-80 w-full object-cover group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="mt-6">
+                    <h4 class="text-xl font-semibold">Bali Adventure</h4>
+                    <p class="text-gray-500 text-sm">Nature & Culture Experience</p>
+                    <p class="mt-2 font-bold text-orange-500">₹44,999</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="py-24 bg-gray-900 text-white">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+        <div>
+            <h3 class="text-4xl font-bold mb-6">Why Travel With NomadSky</h3>
+            <p class="text-gray-300 mb-6">
+                We create premium travel experiences designed for comfort, adventure, and unforgettable memories. Our team ensures every journey is seamless from start to finish.
+            </p>
+            <ul class="space-y-3 text-gray-300">
+                <li>✔ Handpicked Destinations</li>
+                <li>✔ Premium Stay & Transport</li>
+                <li>✔ Expert Travel Planning</li>
+                <li>✔ 24/7 Support</li>
+            </ul>
+        </div>
+        <img src="https://images.unsplash.com/photo-1526779259212-756e0b6b6c1d" class="rounded-3xl shadow-2xl">
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-24 bg-orange-500 text-white">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+        <h3 class="text-4xl font-bold mb-4">Plan Your Journey</h3>
+        <p class="mb-10">Tell us where you want to go and we’ll plan everything for you.</p>
+
+        <form class="bg-white text-gray-900 p-8 rounded-3xl shadow-lg space-y-4" onsubmit="handleSubmit(event)">
+            <input type="text" placeholder="Full Name" class="w-full p-3 border rounded-lg" required>
+            <input type="email" placeholder="Email Address" class="w-full p-3 border rounded-lg" required>
+            <input type="text" placeholder="Destination" class="w-full p-3 border rounded-lg" required>
+            <textarea placeholder="Trip Details" class="w-full p-3 border rounded-lg"></textarea>
+            <button class="w-full bg-orange-500 text-white py-3 rounded-lg hover:bg-orange-600">Send Request</button>
+        </form>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-black text-gray-400 text-center py-6">
+    <p>© 2026 NomadSky Travels. All rights reserved.</p>
+</footer>
+
+<script>
+function handleSubmit(e) {
+    e.preventDefault();
+    alert("Your request has been submitted successfully!");
+}
+</script>
+
+<script 
+  src="https://cdn.jsdelivr.net/gh/sarrthak008/EmbedIQ@main/cdn/enbedIq.js" 
+  data-bot-id="8827727d-239e-4f01-b0dc-4d51b6e36744">
+</script>
+
+</body>
+</html>

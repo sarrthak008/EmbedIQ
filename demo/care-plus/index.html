@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CarePlus Hospital</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Navbar -->
+    <header class="bg-white shadow-md fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-blue-600">CarePlus</h1>
+            <nav class="hidden md:flex gap-8 font-medium">
+                <a href="#home" class="hover:text-blue-600">Home</a>
+                <a href="#services" class="hover:text-blue-600">Services</a>
+                <a href="#doctors" class="hover:text-blue-600">Doctors</a>
+                <a href="#about" class="hover:text-blue-600">About</a>
+                <a href="#contact" class="hover:text-blue-600">Contact</a>
+            </nav>
+            <button class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700">
+                Appointment
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-28 pb-20 bg-gradient-to-r from-blue-50 to-white">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
+            <div>
+                <h2 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
+                    Your Health Is Our <span class="text-blue-600">Top Priority</span>
+                </h2>
+                <p class="text-gray-600 mb-8">
+                    Providing world-class healthcare services with experienced doctors,
+                    advanced technology, and compassionate care.
+                </p>
+                <div class="flex gap-4">
+                    <button class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">
+                        Book Appointment
+                    </button>
+                    <button class="border border-blue-600 text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50">
+                        Learn More
+                    </button>
+                </div>
+            </div>
+            <div>
+                <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3" class="rounded-2xl shadow-lg"
+                    alt="Hospital">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h3 class="text-3xl font-bold mb-4">Our Services</h3>
+            <p class="text-gray-500 mb-12">Comprehensive healthcare solutions for every patient</p>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-8 rounded-xl shadow hover:shadow-lg transition">
+                    <div class="text-blue-600 text-4xl mb-4">🏥</div>
+                    <h4 class="text-xl font-semibold mb-2">Emergency Care</h4>
+                    <p class="text-gray-500">24/7 emergency services with quick response and expert care.</p>
+                </div>
+                <div class="p-8 rounded-xl shadow hover:shadow-lg transition">
+                    <div class="text-blue-600 text-4xl mb-4">🩺</div>
+                    <h4 class="text-xl font-semibold mb-2">General Checkup</h4>
+                    <p class="text-gray-500">Regular health checkups for early diagnosis and prevention.</p>
+                </div>
+                <div class="p-8 rounded-xl shadow hover:shadow-lg transition">
+                    <div class="text-blue-600 text-4xl mb-4">💊</div>
+                    <h4 class="text-xl font-semibold mb-2">Pharmacy</h4>
+                    <p class="text-gray-500">In-house pharmacy providing genuine medicines at all times.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctors -->
+    <section id="doctors" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h3 class="text-3xl font-bold mb-4">Our Doctors</h3>
+            <p class="text-gray-500 mb-12">Meet our experienced medical specialists</p>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow">
+                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2"
+                        class="w-32 h-32 mx-auto rounded-full object-cover mb-4" />
+                    <h4 class="font-semibold text-lg">Dr. John Smith</h4>
+                    <p class="text-gray-500">Cardiologist</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow">
+                    <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f"
+                        class="w-32 h-32 mx-auto rounded-full object-cover mb-4" />
+                    <h4 class="font-semibold text-lg">Dr. Sarah Lee</h4>
+                    <p class="text-gray-500">Neurologist</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow">
+                    <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d"
+                        class="w-32 h-32 mx-auto rounded-full object-cover mb-4" />
+                    <h4 class="font-semibold text-lg">Dr. Michael Brown</h4>
+                    <p class="text-gray-500">Orthopedic</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
+            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef" class="rounded-2xl shadow-lg" />
+            <div>
+                <h3 class="text-3xl font-bold mb-4">About CarePlus Hospital</h3>
+                <p class="text-gray-600 mb-6">
+                    CarePlus Hospital is committed to delivering high-quality healthcare services with modern medical
+                    facilities and a patient-first approach. Our mission is to make healthcare accessible, affordable,
+                    and reliable for everyone.
+                </p>
+                <ul class="space-y-2 text-gray-600">
+                    <li>✔ Experienced Doctors</li>
+                    <li>✔ Advanced Medical Equipment</li>
+                    <li>✔ 24/7 Emergency Support</li>
+                    <li>✔ Patient-Centered Care</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-20 bg-blue-600 text-white">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h3 class="text-3xl font-bold mb-4">Book an Appointment</h3>
+            <p class="mb-10">We are here to help you. Contact us today.</p>
+
+            <div class="max-w-xl mx-auto bg-white text-gray-800 p-8 rounded-xl shadow">
+                <form class="space-y-4" onsubmit="handleSubmit(event)">
+                    <input type="text" placeholder="Full Name" class="w-full p-3 border rounded-lg" required>
+                    <input type="email" placeholder="Email Address" class="w-full p-3 border rounded-lg" required>
+                    <input type="date" class="w-full p-3 border rounded-lg" required>
+                    <textarea placeholder="Message" class="w-full p-3 border rounded-lg"></textarea>
+                    <button class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700">
+                        Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-6 text-center">
+        <p>© 2026 CarePlus Hospital. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert("Appointment request submitted successfully!");
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/gh/sarrthak008/EmbedIQ@main/cdn/enbedIq.js"
+        data-bot-id="1595feae-0f4d-404e-8879-a2174d786e1b">
+    </script>
+
+</body>
+
+</html>
