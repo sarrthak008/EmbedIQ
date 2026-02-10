@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://embediq.onrender.com",
+  baseURL: "https://emotional-aviva-embediq-da7f59e7.koyeb.app",
 });
 
 api.interceptors.request.use((config) => {

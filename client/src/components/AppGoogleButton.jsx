@@ -2,7 +2,7 @@ const AppGoogleButton = ({ text = "Continue with Google" }) => {
 
   const handleGoogleLogin = () => {
     // redirect to Spring Boot OAuth
-    window.location.href = "https://embediq.onrender.com/oauth2/authorization/google";
+    window.location.href = "https://emotional-aviva-embediq-da7f59e7.koyeb.app/oauth2/authorization/google";
   };
 
   return (
