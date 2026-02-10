@@ -74,9 +74,9 @@ const Navbar = () => {
           <Link to="/#pricing" onClick={closeMenu}>Pricing</Link>
 
           <div className="border-t pt-6 flex flex-col gap-4">
-            <button className="bg-black text-white py-3 rounded-full">
+            <Link to={"/login"} className="bg-black text-white py-3 rounded-full">
               Get Started →
-            </button>
+            </Link>
           </div>
         </nav>
       </aside>
