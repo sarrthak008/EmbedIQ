@@ -13,6 +13,7 @@ import Plans from './views/Plans'
 import Navbar from './components/Navbar'
 import PaymentSuccess from './views/PaymentSuccess'
 import Admin from './views/Admin'
+import NotFound from "./views/NotFound"
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
           <Route path='/plans' element={<Plans/>}/>
           <Route path='/success' element={<PaymentSuccess/>}/>
           <Route path='/admin' element={<Admin/>}/>
+          <Route path='*' element={<NotFound/>}/>
        </Routes>
      </BrowserRouter>
   )
