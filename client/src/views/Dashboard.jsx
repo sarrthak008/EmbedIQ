@@ -21,6 +21,21 @@ const Dashboard = () => {
   const isLoaderActive = useSelector(state => state.ui.isLoaderActive)
   const isGuideOpen = useSelector(state => state.ui.isGuideOpen)
 
+  const checkUserPresent=()=>{
+     try {
+         let user = JSON.parse(localStorage.getItem("USER")) || null ; 
+         if(user == null){
+          navigate("/login")
+         }
+     } catch (error) {
+       console.log("ERRR" ,error)
+     }
+  }
+
+  useEffect(()=>{
+    checkUserPresent()
+  },[])
+
   return (
     <div>
       <Sidebar open={sidebarOpen} setOpen={setSidebarOpen} />
