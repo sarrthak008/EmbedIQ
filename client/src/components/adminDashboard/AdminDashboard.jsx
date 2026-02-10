@@ -55,7 +55,7 @@ const AdminDashboard = () => {
               {dashboardData?.recentActivity?.map((row, i) => (
                 <tr key={i} className="hover:bg-gray-50 transition-colors">
                   <td className="px-6 py-4 font-bold">{row.initiator}</td>
-                  <td className="px-6 py-4 text-gray-500">{row.operation}</td>
+                  <td className="px-6 py-4 text-gray-500"><marquee>{row.operation}</marquee></td>
                   <td className="px-6 py-4 text-right text-xs font-bold uppercase">{TimeFormater(row.createdAt).relativeTime}</td>
                 </tr>
               ))}
