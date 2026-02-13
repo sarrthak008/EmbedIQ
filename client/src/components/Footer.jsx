@@ -1,5 +1,6 @@
 import { BRAND_NAME } from "../../config/default";
 import robot from "../assets/robot.png";
+import ShineyCard from "../components/SineyCard"
 
 const Footer = () => {
   return (
@@ -63,15 +64,7 @@ const Footer = () => {
 
           {/* CTA */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide">
-              Get Started
-            </h3>
-            <p className="text-gray-500 text-sm mt-4">
-              Start building your AI chatbot today.
-            </p>
-            <button className="mt-6 bg-black text-white px-6 py-3 rounded-full text-sm hover:opacity-90 transition">
-              Get Started →
-            </button>
+          <ShineyCard/>
           </div>
 
         </div>
