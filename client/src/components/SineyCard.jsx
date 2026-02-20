@@ -1,15 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { BotService } from '../Services/BotService';
+import {BellDot} from "lucide-react"
 
 const Card = () => {
+
+  const [botCount,setBotCount] = useState(0);
+
+   const loadBotsCount =async()=>{
+     try {
+        let data = await BotService.getBotCount();
+        setBotCount(data.data || "Loading...");
+     } catch (error) {
+        setBotCount("Loading...")
+     }
+   }
+  
+   useEffect(()=>{
+     loadBotsCount();
+   },[])
+
   return (
     <StyledWrapper>
       <div className="outer">
         <div className="dot" />
         <div className="card">
           <div className="ray" />
-          <div className="text">100</div>
-          <div>Bots Live~</div>
+          <div className="text">{botCount}</div>
+          <div className='flex items-center gap-2'>Bots Live <BellDot size={14}/></div>
           <div className="line topl" />
           <div className="line leftl" />
           <div className="line bottoml" />

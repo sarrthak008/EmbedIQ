@@ -200,6 +200,19 @@ const BotService = {
         success: false, message: error.response?.data?.message || "Failed to get bot chat history."
       }
      }
+  },
+
+  getBotCount:async()=>{
+     try {
+      const response = await api.get("/api/chat/botcount");
+      if (response.data.success) {
+        return { success: true, data: response.data.data }
+      } else {
+        return { success: false, message: response.data.message }
+      }
+     } catch (error) {
+      return {success : false, message: error.response?.data?.message || "Failed to get bot count." }
+     }
   }
 }
 
