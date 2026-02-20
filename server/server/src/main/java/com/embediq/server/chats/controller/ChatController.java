@@ -39,4 +39,13 @@ public class ChatController {
         }
         }
 
+        @GetMapping("/botcount")
+       public ResponseEntity<ApiResponce<?>> getBotCounts(){
+         try{
+            long count =   chatService.getAllBotsCount();
+            return ResponseEntity.ok(new ApiResponce<>(true,"loadin bots cound",count));
+         } catch (Exception e) {
+             return ResponseEntity.status(400).body(new ApiResponce<>(false,"loading Fails",e.getMessage()));
+         }
+        }
 }

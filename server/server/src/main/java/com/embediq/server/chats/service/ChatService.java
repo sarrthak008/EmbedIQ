@@ -98,4 +98,8 @@ public class ChatService {
         LocalDateTime twentyFourHoursAgo = LocalDateTime.now().minusHours(24);
         return chatRepo.findRecentChatsByBot(botId, twentyFourHoursAgo);
     }
+
+    public long getAllBotsCount(){
+        return  botRepo.count();
+    }
 }
