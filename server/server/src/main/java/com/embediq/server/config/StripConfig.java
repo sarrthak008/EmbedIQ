@@ -12,7 +12,10 @@ public class StripConfig {
 
     @PostConstruct
     public void setup() {
-        // Sets the secret key globally for the Stripe library
+        if (secretKey == null || secretKey.isEmpty()) {
+            throw new RuntimeException("STRIPE_SECRET_KEY is missing from application properties!");
+        }
         Stripe.apiKey = secretKey;
+        System.out.println("Stripe initialized with key starting with: " + secretKey.substring(0, 7));
     }
 }
