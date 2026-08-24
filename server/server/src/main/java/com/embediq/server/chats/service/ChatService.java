@@ -33,24 +33,24 @@ public class ChatService {
     @Autowired
     private AskAI askAI;
 
-    public ChatResponse getAnswer(String botId, String question){
+    public ChatResponse getAnswer(String botId, String question) {
         // check id is ohk..
         Bot bot = botRepo.findById(botId)
-                .orElseThrow(()-> new RuntimeException("Bot Not found or service is deactive.."));
+                .orElseThrow(() -> new RuntimeException("Bot Not found or service is deactive.."));
 
         // check bot is active
-        if(bot.getIsBotActive() == false){
+        if (bot.getIsBotActive() == false) {
             throw new RuntimeException("bot is currently deactive please try latter");
         }
 
-
+        // add chate service commet
         String userId = bot.getUser().getUser_id();
         User botOwner = userRepo.findById(userId)
-                .orElseThrow(()-> new RuntimeException("some thing went wrong..."));
+                .orElseThrow(() -> new RuntimeException("some thing went wrong..."));
 
         Plan userPlan = botOwner.getMy_plan();
 
-        if(bot.getChatCount() >= userPlan.getMsg_count()){
+        if (bot.getChatCount() >= userPlan.getMsg_count()) {
             throw new RuntimeException("You have reached your plan limit of " +
                     userPlan.getMsg_count() + " chats. Please upgrade!");
         }
@@ -68,13 +68,12 @@ public class ChatService {
         ChatResponse response = new ChatResponse();
         response.setBot_answer(newChat.getBot_answer());
         response.setUser_question(newChat.getUser_question());
-        response.setCreated_at(newChat.getCreated_at() != null ?
-                newChat.getCreated_at() : LocalDateTime.now());
+        response.setCreated_at(newChat.getCreated_at() != null ? newChat.getCreated_at() : LocalDateTime.now());
         response.setTheme(bot.getTheme());
         response.setOrigin(bot.getDomain());
         response.setPositon(bot.getPosition());
         response.setBot_name(bot.getBot_name());
-        return  response;
+        return response;
     }
 
     public Map<String, Object> getChartData(String botId) {
@@ -99,7 +98,7 @@ public class ChatService {
         return chatRepo.findRecentChatsByBot(botId, twentyFourHoursAgo);
     }
 
-    public long getAllBotsCount(){
-        return  botRepo.count();
+    public long getAllBotsCount() {
+        return botRepo.count();
     }
 }
